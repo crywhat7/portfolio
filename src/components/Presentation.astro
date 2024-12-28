@@ -9,7 +9,55 @@ import { basics } from "../../cv.json";
   >
     {basics.name}
   </h1>
-  <small class="text-xl flex justify-center opacity-50">
+  <small class="text-xl flex justify-center opacity-75">
     {basics.label}
   </small>
+  <!-- Flecha hacia abajo -->
+  <svg
+    class="animate-bounce w-6 h-6 opacity-25 mx-auto mt-4"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+  </svg>
 </HeroSection>
+
+<script>
+  // Según el scroll, transforma el tamaño de la fuente del nombre
+  const name = document.querySelector("h1") as HTMLHeadingElement;
+  const small = document.querySelector("small") as HTMLHeadingElement;
+  const factor = 800;
+
+  window.addEventListener("scroll", () => {
+    const scroll = window.scrollY;
+    const scale = 1 + scroll / factor;
+
+    // Si no existe el nombre o el small, no hagas nada
+    if (!name || !small) return;
+
+    // Si el scroll es menor a factor, muestra el nombre
+    if (scroll < factor) {
+      name.style.display = "flex";
+      small.style.display = "flex";
+    }
+
+    // Si el scroll es menor a factor, transforma el nombre
+    name.style.transform = `scale(${scale}) translateY(${(scroll * 5) / 10}px)`;
+    name.style.opacity = `${1 - scroll / factor}`;
+    small.style.transform = `scale(${scale}) translateY(${(scroll * 5) / 10}px)`;
+    small.style.opacity = `${1 - scroll / factor}`;
+
+    // Si el scroll es mayor a factor, oculta el nombre
+    if (scroll > factor) {
+      name.style.opacity = "0";
+      small.style.opacity = "0";
+      name.style.display = "none";
+      small.style.display = "none";
+    }
+  });
+</script>

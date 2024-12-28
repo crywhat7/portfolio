@@ -14,7 +14,7 @@ import { basics } from "../../cv.json";
       {basics.name} - {basics.label}
     </title>
   </head>
-  <body>
+  <body class="w-screen overflow-x-hidden">
     <img
       id="background"
       src={background.src}
@@ -33,6 +33,9 @@ import { basics } from "../../cv.json";
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+  html {
+    scroll-behavior: smooth;
   }
   code {
     display: inline-block;

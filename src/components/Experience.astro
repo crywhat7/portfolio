@@ -1,0 +1,25 @@
+---
+import HeroSection from "./HeroSection.astro";
+import { work } from "../../cv.json";
+---
+
+<HeroSection maxScreenClass="max-w-screen-md">
+  <h1 class="w-full flex text-2xl font-bold opacity-85 tracking-wide">
+    Experience
+  </h1>
+  <ul class="mt-4 text-lg flex flex-col gap-6">
+    {
+      work.map((job) => (
+        <li>
+          <h2 class="font-bold">{job.position}</h2>
+          <p class="opacity-75">{job.summary}</p>
+          <footer>
+            <small class="opacity-50">
+              {job.startDate} - {job.endDate || "Present"}
+            </small>
+          </footer>
+        </li>
+      ))
+    }
+  </ul>
+</HeroSection>
