@@ -1,0 +1,17 @@
+---
+export interface Props {
+  maxScreenClass?: string;
+}
+
+const defaultProps: Props = {
+  maxScreenClass: "max-w-screen-xl",
+};
+
+const { maxScreenClass = defaultProps.maxScreenClass } = Astro.props as Props;
+---
+
+<section class="flex flex-col gap-2 mx-auto" class:list={[maxScreenClass]}>
+  <div class="flex flex-col gap-1 mt-96 mb-96">
+    <slot />
+  </div>
+</section>

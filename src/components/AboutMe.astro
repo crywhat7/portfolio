@@ -1,0 +1,13 @@
+---
+import HeroSection from "./HeroSection.astro";
+import { basics } from "../../cv.json";
+---
+
+<HeroSection maxScreenClass="max-w-screen-md">
+  <h1 class="w-full flex text-2xl font-bold opacity-85 tracking-wide">
+    Sobre mí
+  </h1>
+  <p class="text-lg flex opacity-70">
+    {basics.summary}
+  </p>
+</HeroSection>

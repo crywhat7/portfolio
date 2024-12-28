@@ -1,0 +1,15 @@
+---
+import HeroSection from "./HeroSection.astro";
+import { basics } from "../../cv.json";
+---
+
+<HeroSection>
+  <h1
+    class="w-full flex justify-center text-9xl font-bold opacity-85 tracking-wide"
+  >
+    {basics.name}
+  </h1>
+  <small class="text-xl flex justify-center opacity-50">
+    {basics.label}
+  </small>
+</HeroSection>

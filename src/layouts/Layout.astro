@@ -1,22 +1,71 @@
+---
+import background from "../assets/background.svg";
+import { basics } from "../../cv.json";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>
+      {basics.name} - {basics.label}
+    </title>
+  </head>
+  <body>
+    <img
+      id="background"
+      src={background.src}
+      alt=""
+      fetchpriority="high"
+      class="pointer-events-none"
+    />
+    <slot />
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  code {
+    display: inline-block;
+    background:
+      linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
+      linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%) border-box;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 6px 8px;
+  }
+  pre {
+    font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+      Consolas, "DejaVu Sans Mono", monospace;
+    font-weight: normal;
+    background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+  }
+  #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100;
+    height: 100%;
+    z-index: -1;
+    filter: blur(100px);
+  }
+
+  body {
+    font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+      Arial, sans-serif;
+    height: 100%;
+  }
 </style>
